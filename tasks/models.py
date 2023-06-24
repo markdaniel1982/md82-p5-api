@@ -21,7 +21,7 @@ class Task(models.Model):
     priority = models.IntegerField(choices=PRIORITY_CHOICES)
     due_date = models.DateTimeField()
     attachments = models.FileField(
-        upload_to=(upload_to=user_directory_path),
+        upload_to=user_directory_path,
         default='../default_task_j4ryhk',
         blank=True,
         )

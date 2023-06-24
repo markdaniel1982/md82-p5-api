@@ -10,7 +10,7 @@ class TaskSerializer(serializers.ModelSerializer):
 
     def validate_attachments(self, value):
         if value.size > 1024 * 1024 * 5:
-            raise.serializers.ValidationError(
+            raise serializers.ValidationError(
                 'File size is larger than 5mb'
             )
         return value
