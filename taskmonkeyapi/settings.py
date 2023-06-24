@@ -17,7 +17,8 @@ if os.path.exists('env.py'):
     import env
 
 CLOUDINARY_STORAGE = {
-    'CLOUDINARY_URL': os.environ.get('CLOUDINARY_URÖ')
+    'CLOUDINARY_URL': os.environ.get('CLOUDINARY_URL'),
+    'CLOUDINARY_API_SECRET': os.environ.get('CLOUDINARY_API_SECRET'),
 }
 MEDIA_URL = '/media/'
 DEFAULT_FILE_STORAGE = 'cloudinary_storage.storage.MediaCloudinaryStorage'
@@ -35,7 +36,7 @@ SECRET_KEY = 'django-insecure-l_fup-s3+s#tkkd2iwqn2i10p#h$f8&5f5$k*^jnw20$9jpqee
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['8000-markdaniel1982-md82-p5-a-oja20ldm0o.us2.codeanyapp.com']
 
 
 # Application definition
