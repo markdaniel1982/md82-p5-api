@@ -3,7 +3,7 @@ from django.contrib.auth.models import User
 
 
 class Task(models.Model):
-    PRIORITY_CHOICES = [
+    priority_choices = [
         (1, 'URGENT'),
         (2, 'Normal'),
         (3, 'Low')
@@ -18,11 +18,10 @@ class Task(models.Model):
     updated_on = models.DateTimeField(auto_now=True)
     title = models.CharField(max_length=255)
     content = models.TextField(blank=True)
-    priority = models.IntegerField(choices=PRIORITY_CHOICES)
+    priority = models.IntegerField(choices=priority_choices)
     due_date = models.DateTimeField()
     attachments = models.FileField(
         upload_to=user_directory_path,
-        default='../default_task_j4ryhk',
         blank=True,
         )
 
