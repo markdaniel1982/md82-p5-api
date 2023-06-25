@@ -33,6 +33,7 @@ class Task(models.Model):
 
     class Meta:
         ordering = ['due_date']
+        # this orders the tasks by the closest deadline first
 
     def __Str__(self):
         return f'{self.id} {self.title}'
