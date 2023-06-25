@@ -12,10 +12,10 @@ class CommentSerializer(serializers.ModelSerializer):
 
     def get_is_owner(self, obj):
         request = self.context['request']
-        return request.user == obj.IsOwnerOrReadOnly
+        return request.user == obj.owner
     
     class Meta:
-        model Comment
+        model = Comment
         fields = [
             'id',
             'owner',
@@ -27,3 +27,6 @@ class CommentSerializer(serializers.ModelSerializer):
             'updated_on',
             'content',
         ]
+
+class CommentDetailSerializer(CommentSerializer):
+    task = serializers.ReadOnlyField(source='task.id')

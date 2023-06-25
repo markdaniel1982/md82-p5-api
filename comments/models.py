@@ -5,7 +5,7 @@ from tasks.models import Task
 
 class Comment(models.Model):
     owner = models.ForeignKey(User, on_delete=models.CASCADE)
-    post = models.ForeignKey(Task, on_delete=models.CASCADE)
+    task = models.ForeignKey(Task, on_delete=models.CASCADE)
     created_on = models.DateTimeField(auto_now_add=True)
     updated_on = models.DateTimeField(auto_now=True)
     content = models.TextField()
