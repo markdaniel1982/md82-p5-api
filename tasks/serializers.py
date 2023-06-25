@@ -32,5 +32,6 @@ class TaskSerializer(serializers.ModelSerializer):
             'content',
             'priority',
             'due_date',
+            'status',
             'attachments',
         ]

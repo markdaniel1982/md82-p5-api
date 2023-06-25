@@ -8,6 +8,11 @@ class Task(models.Model):
         (2, 'Normal'),
         (3, 'Low')
     ]
+    status_choices = [
+        (1, 'Not Started'),
+        (2, 'In Progress'),
+        (3, 'Complete'),
+    ]
 
     def user_directory_path(instance, filename):
         # files will be uploaded to MEDIA_ROOT / user_<id>/<filename>
@@ -20,13 +25,14 @@ class Task(models.Model):
     content = models.TextField(blank=True)
     priority = models.IntegerField(choices=priority_choices)
     due_date = models.DateTimeField()
+    status = models.IntegerField(choices=status_choices, default=1)
     attachments = models.FileField(
         upload_to=user_directory_path,
         blank=True,
-        )
+    )
 
     class Meta:
-        ordering= ['due_date']
+        ordering = ['due_date']
 
     def __Str__(self):
         return f'{self.id} {self.title}'
