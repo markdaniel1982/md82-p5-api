@@ -22,5 +22,12 @@ class ProfileList(generics.ListAPIView):
 
 class ProfileDetail(generics.RetrieveUpdateAPIView):
     permission_classes = [IsOwnerOrReadOnly]
-    queryset = Profile.objects.all()
+    queryset = Profile.objects.annotate(
+        tasks_count=Count('owner__task', distinct=True)
+    ).order_by('created_on')
+    serializer_class = ProfileSerializer
+    filter_backends = [
+        filters.OrderingFilter
+    ]
+    ordering_fields = ['tasks_count']
     serializer_class = ProfileSerializer
