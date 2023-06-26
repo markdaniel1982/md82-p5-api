@@ -13,6 +13,10 @@ class Task(models.Model):
         (2, 'In Progress'),
         (3, 'Complete'),
     ]
+    privacy_choices = [
+        (1, "Private"),
+        (2, "Public"),
+    ]
 
     def user_directory_path(instance, filename):
         # files will be uploaded to MEDIA_ROOT / user_<id>/<filename>
@@ -25,6 +29,7 @@ class Task(models.Model):
     content = models.TextField(blank=True)
     priority = models.IntegerField(choices=priority_choices)
     due_date = models.DateTimeField()
+    privacy = models.IntegerField(choices=privacy_choices, default=1)
     status = models.IntegerField(choices=status_choices, default=1)
     attachments = models.FileField(
         upload_to=user_directory_path,
