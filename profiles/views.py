@@ -15,7 +15,12 @@ class ProfileList(generics.ListAPIView):
     ).order_by('created_on')
     serializer_class = ProfileSerializer
     filter_backends = [
-        filters.OrderingFilter
+        filters.OrderingFilter,
+        filters.SearchFilter
+    ]
+    search_fields = [
+        'owner__username',
+        'name'
     ]
     ordering_fields = ['tasks_count']
 
