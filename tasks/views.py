@@ -37,3 +37,27 @@ class TaskDetail(generics.RetrieveUpdateDestroyAPIView):
     permission_classes = [IsOwnerOrReadOnly]
     serializer_class = TaskSerializer
     queryset = Task.objects.all()
+
+
+class PriorityChoicesViewSet(APIView):
+    def get(self, request):
+
+        prioritychoices = Task.priority_choices
+
+        return Response(prioritychoices)
+
+
+class StatusChoicesViewSet(APIView):
+    def get(self, request):
+
+        statuschoices = Task.status_choices
+
+        return Response(statuschoices)
+
+
+class PrivacyChoicesViewSet(APIView):
+    def get(self, request):
+
+        privacychoices = Task.privacy_choices
+
+        return Response(privacychoices)
