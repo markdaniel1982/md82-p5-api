@@ -45,6 +45,7 @@ class ChoicesViewSet(APIView):
         priority = Task.priority_choices
         status = Task.status_choices
         privacy = Task.privacy_choices
+        
         if self.kwargs['choices'] == 'priority':
             return Response(priority)
         elif self.kwargs['choices'] == 'status':
