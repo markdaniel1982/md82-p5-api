@@ -34,6 +34,7 @@ class Task(models.Model):
     attachments = models.FileField(
         upload_to=user_directory_path,
         blank=True,
+        null=True,
     )
 
     class Meta:
