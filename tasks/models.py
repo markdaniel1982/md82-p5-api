@@ -19,10 +19,6 @@ class Task(models.Model):
         (2, "Public"),
     ]
 
-    def user_directory_path(instance, filename):
-        # files will be uploaded to MEDIA_ROOT / user_<id>/<filename>
-        return 'user_{0}/{1}'.format(instance.owner.id, filename)
-
     owner = models.ForeignKey(User, on_delete=models.CASCADE)
     created_on = models.DateTimeField(auto_now_add=True)
     updated_on = models.DateTimeField(auto_now=True)
