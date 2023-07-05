@@ -1,6 +1,7 @@
 from django.db import models
 from django.db.models.signals import post_save
 from django.contrib.auth.models import User
+from tasks.models import Task
 
 
 class Profile(models.Model):
@@ -11,6 +12,8 @@ class Profile(models.Model):
         upload_to='images/', default='../profileplaceholder_niir6l'
     )
     created_on = models.DateTimeField(auto_now_add=True)
+    created_tasks = models.ForeignKey(
+        Task, on_delete=models.CASCADE)
 
     class Meta:
         ordering = ['-created_on']

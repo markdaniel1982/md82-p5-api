@@ -21,6 +21,7 @@ class ProfileList(generics.ListAPIView):
     search_fields = [
         'owner__username',
         'name'
+        'due_date'
     ]
     ordering_fields = ['tasks_count']
 
@@ -35,4 +36,3 @@ class ProfileDetail(generics.RetrieveUpdateAPIView):
         filters.OrderingFilter
     ]
     ordering_fields = ['tasks_count']
-    serializer_class = ProfileSerializer

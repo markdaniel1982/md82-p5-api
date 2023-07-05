@@ -1,5 +1,6 @@
 from django.db import models
 from django.contrib.auth.models import User
+from comments.models import Comment
 
 
 class Task(models.Model):
@@ -31,11 +32,8 @@ class Task(models.Model):
     due_date = models.DateTimeField(null=True, blank=True)
     privacy = models.IntegerField(choices=privacy_choices, default=1)
     status = models.IntegerField(choices=status_choices, default=1)
-    attachments = models.FileField(
-        upload_to=user_directory_path,
-        blank=True,
-        null=True,
-    )
+    comments = models.ForeignKey(
+        Comment, on_delete=models.CASCADE, null=True, blank=True)
 
     class Meta:
         ordering = ['due_date']
