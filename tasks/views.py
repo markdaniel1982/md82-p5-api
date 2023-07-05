@@ -40,9 +40,9 @@ class TaskDetail(generics.RetrieveUpdateDestroyAPIView):
     queryset = Task.objects.all()
 
 
-class StatusChoices(APIView):
-    def get(self, request, *args, **kwargs):
+# class PriorityChoices(APIView):
+#     def get(self, request, *args, **kwargs):
 
-        status = Task.status_choices
+#         priority = Task.priority_choices
 
-        return Response(status)
+#         return Response(status)
