@@ -28,5 +28,4 @@ class TaskSerializer(serializers.ModelSerializer):
             'due_date',
             'privacy',
             'status',
-            'comments',
         ]
