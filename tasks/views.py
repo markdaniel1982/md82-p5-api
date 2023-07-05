@@ -41,7 +41,7 @@ class TaskDetail(generics.RetrieveUpdateDestroyAPIView):
 
 
 class PriorityChoices(APIView):
-    def get(self, request, *args, **kwargs):
+    def get(self):
 
         priority = Task.priority_choices
 
