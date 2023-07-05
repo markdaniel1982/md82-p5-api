@@ -39,16 +39,9 @@ class TaskDetail(generics.RetrieveUpdateDestroyAPIView):
     queryset = Task.objects.all()
 
 
-class ChoicesViewSet(APIView):
+class StatusChoices(APIView):
     def get(self, request, *args, **kwargs):
 
-        priority = Task.priority_choices
         status = Task.status_choices
-        privacy = Task.privacy_choices
-        
-        if self.kwargs['choices'] == 'priority':
-            return Response(priority)
-        elif self.kwargs['choices'] == 'status':
-            return Response(status)
-        else:
-            return Response(privacy)
+
+        return Response(status)
