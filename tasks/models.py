@@ -1,18 +1,18 @@
 from django.db import models
 from django.contrib.auth.models import User
-from comments.models import Comment
 
 
 class Task(models.Model):
     priority_choices = [
         (1, 'URGENT'),
         (2, 'Normal'),
-        (3, 'Low')
+        (3, 'Low'),
     ]
     status_choices = [
         (1, 'Not Started'),
         (2, 'In Progress'),
         (3, 'Complete'),
+        (4, 'On hold'),
     ]
     privacy_choices = [
         (1, "Private"),
@@ -32,8 +32,6 @@ class Task(models.Model):
     due_date = models.DateTimeField(null=True, blank=True)
     privacy = models.IntegerField(choices=privacy_choices, default=1)
     status = models.IntegerField(choices=status_choices, default=1)
-    comments = models.ForeignKey(
-        Comment, on_delete=models.CASCADE, null=True, blank=True)
 
     class Meta:
         ordering = ['due_date']
