@@ -11,8 +11,6 @@ class Profile(models.Model):
         upload_to='images/', default='../profileplaceholder_niir6l'
     )
     created_on = models.DateTimeField(auto_now_add=True)
-    created_tasks = models.ForeignKey(
-        Task, on_delete=models.CASCADE, null=True, blank=True)
 
     class Meta:
         ordering = ['-created_on']
