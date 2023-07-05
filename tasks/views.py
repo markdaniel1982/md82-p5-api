@@ -23,7 +23,8 @@ class TaskList(generics.ListCreateAPIView):
     ]
     search_fields = [
         'owner__username',
-        'title'
+        'title',
+        'content'
     ]
     ordering_fields = [
         'tasks_count',
