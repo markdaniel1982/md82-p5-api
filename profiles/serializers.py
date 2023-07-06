@@ -5,6 +5,7 @@ from .models import Profile
 class ProfileSerializer(serializers.ModelSerializer):
     owner = serializers.ReadOnlyField(source='owner.username')
     is_owner = serializers.SerializerMethodField()
+    profile_image = serializers.ReadOnlyField(source='owner.profile.image.url')
 
     tasks_count = serializers.ReadOnlyField()
 
