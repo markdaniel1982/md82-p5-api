@@ -17,6 +17,7 @@ class CommentList(generics.ListCreateAPIView):
         filters.SearchFilter,
         DjangoFilterBackend,
     ]
+    filterset_fields = ['task']
     search_fields = [
         'owner__username',
         'content',
