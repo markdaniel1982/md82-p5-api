@@ -25,7 +25,7 @@ class Task(models.Model):
     title = models.CharField(max_length=255)
     content = models.TextField(blank=True)
     priority = models.IntegerField(choices=priority_choices, default=2)
-    due_date = models.DateTimeField(null=True, blank=True)
+    due_date = models.DateField(null=True, blank=True)
     privacy = models.IntegerField(choices=privacy_choices, default=1)
     status = models.IntegerField(choices=status_choices, default=1)
 
