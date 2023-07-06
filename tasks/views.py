@@ -16,7 +16,6 @@ class TaskList(generics.ListCreateAPIView):
         permissions.IsAuthenticatedOrReadOnly
     ]
     queryset = Task.objects.annotate(
-        tasks_count=Count('id', distinct=True),
         comments_count=Count('comment', distinct=True)
     ).order_by('due_date')
     filter_backends = [
@@ -26,12 +25,17 @@ class TaskList(generics.ListCreateAPIView):
     ]
     filterset_fields = [
         'owner__profile',
-        'Task__status',
+        'status',
+        'priority',
+        'due_date',
     ]
     search_fields = [
         'owner__username',
         'title',
         'content',
+        'status',
+        'priority',
+        'due_date',
     ]
     ordering_fields = [
         'tasks_count',
