@@ -12,6 +12,16 @@ class CommentList(generics.ListCreateAPIView):
     ).order_by('created_on')
     serializer_class = CommentSerializer
     permission_classes = [permissions.IsAuthenticatedOrReadOnly]
+    filter_backends = [
+        filters.OrderingFilter,
+        filters.SearchFilter,
+        DjangoFilterBackend,
+    ]
+    search_fields = [
+        'owner__username',
+        'content',
+    ]
+    ordering_fields = ['created_on']
 
     def perform_create(self, serializer):
         serializer.save(owner=self.request.user)
