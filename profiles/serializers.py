@@ -22,4 +22,5 @@ class ProfileSerializer(serializers.ModelSerializer):
             'created_on',
             'tasks_count',
             'is_owner',
+            'comments_count'
         ]
