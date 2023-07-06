@@ -2,6 +2,7 @@ from django.http import Http404
 from django.db.models import Count
 from django.contrib.auth.models import User
 from rest_framework import status, generics, permissions, filters
+from django_filters.rest_framework import DjangoFilterBackend
 from rest_framework.response import Response
 from rest_framework.views import APIView
 from .models import Task
@@ -15,19 +16,27 @@ class TaskList(generics.ListCreateAPIView):
         permissions.IsAuthenticatedOrReadOnly
     ]
     queryset = Task.objects.annotate(
-        tasks_count=Count('id', distinct=True)
+        tasks_count=Count('id', distinct=True),
+        comments_count=Count('comment', distinct=True)
     ).order_by('due_date')
     filter_backends = [
         filters.OrderingFilter,
-        filters.SearchFilter
+        filters.SearchFilter,
+        DjangoFilterBackend,
+    ]
+    filterset_fields = [
+        'owner__profile',
+        'Task__status',
     ]
     search_fields = [
         'owner__username',
         'title',
-        'content'
+        'content',
     ]
     ordering_fields = [
         'tasks_count',
+        'comments_count',
+        'due_date',
     ]
 
     def perform_create(self, serializer):
@@ -37,7 +46,9 @@ class TaskList(generics.ListCreateAPIView):
 class TaskDetail(generics.RetrieveUpdateDestroyAPIView):
     permission_classes = [IsOwnerOrReadOnly]
     serializer_class = TaskSerializer
-    queryset = Task.objects.all()
+    queryset = Task.objects.annotate(
+        comments_count=Count('comment', distinct=True)
+    ).order_by('-due_date')
 
 
 class PriorityChoices(APIView):
