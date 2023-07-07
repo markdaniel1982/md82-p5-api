@@ -11,13 +11,11 @@ from taskmonkeyapi.permissions import IsOwnerOrReadOnly
 
 
 class TaskList(generics.ListCreateAPIView):
+    queryset = Task.objects.all()
     serializer_class = TaskSerializer
     permission_classes = [
         permissions.IsAuthenticatedOrReadOnly
     ]
-    queryset = Task.objects.annotate(
-        comments_count=Count('comment', distinct=True)
-    ).order_by('due_date')
     filter_backends = [
         filters.OrderingFilter,
         filters.SearchFilter,
