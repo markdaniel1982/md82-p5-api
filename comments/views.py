@@ -7,9 +7,7 @@ from .serializers import CommentSerializer, CommentDetailSerializer
 
 
 class CommentList(generics.ListCreateAPIView):
-    queryset = Comment.objects.annotate(
-        comments_count=Count('id', distinct=True)
-    ).order_by('created_on')
+    queryset = Comment.objects.all()
     serializer_class = CommentSerializer
     permission_classes = [permissions.IsAuthenticatedOrReadOnly]
     filter_backends = [
