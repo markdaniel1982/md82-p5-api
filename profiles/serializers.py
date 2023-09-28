@@ -5,7 +5,8 @@ from .models import Profile
 class ProfileSerializer(serializers.ModelSerializer):
     owner = serializers.ReadOnlyField(source='owner.username')
     is_owner = serializers.SerializerMethodField()
-    profile_image = serializers.ReadOnlyField(source='owner.profile.image.url')
+    profile_image = serializers.ImageField(
+        source='profile_image.url')
 
     tasks_count = serializers.ReadOnlyField()
     comments_count = serializers.ReadOnlyField()
