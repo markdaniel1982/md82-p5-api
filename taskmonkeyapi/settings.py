@@ -14,6 +14,8 @@ from pathlib import Path
 import os
 import dj_database_url
 import re
+from django.conf import settings
+from django.conf.urls.static import static
 
 if os.path.exists('env.py'):
     import env
