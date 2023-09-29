@@ -16,6 +16,7 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path, include
 from .views import root_route, logout_route
+from django.conf.urls.static import static
 
 urlpatterns = [
     path('', root_route),
@@ -29,4 +30,4 @@ urlpatterns = [
     path('', include('profiles.urls')),
     path('', include('tasks.urls')),
     path('', include('comments.urls')),
-]
+]+static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
