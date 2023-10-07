@@ -11,6 +11,7 @@ class TaskSerializer(serializers.ModelSerializer):
     profile_image = serializers.ImageField(
         source='owner.profile.profile_image.url'
     )
+    content = serializers.CharField()
     comments_count = serializers.ReadOnlyField()
     # status = serializers.ReadOnlyField()
     # priority = serializers.ReadOnlyField()

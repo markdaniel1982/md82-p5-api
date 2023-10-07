@@ -23,7 +23,6 @@ class ProfileList(generics.ListAPIView):
     ]
     search_fields = [
         'owner__username',
-        'content',
     ]
     ordering_fields = ['created_on']
 

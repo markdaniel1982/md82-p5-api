@@ -68,8 +68,8 @@ DEBUG = 'DEV' in os.environ
 
 ALLOWED_HOSTS = [
     os.environ.get('ALLOWED_HOST'),
-    '*',
-    '8000-markdaniel1982-md82-p5-a-oja20ldm0o.us2.codeanyapp.com',
+    'https://taskmonkey-fcc370ffbd74.herokuapp.com',
+    '*'
 ]
 
 
