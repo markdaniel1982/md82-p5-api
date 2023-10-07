@@ -7,6 +7,8 @@ class ProfileSerializer(serializers.ModelSerializer):
     is_owner = serializers.SerializerMethodField()
     tasks_count = serializers.ReadOnlyField()
     comments_count = serializers.ReadOnlyField()
+    profile_image = serializers.ImageField()
+
 
     def get_is_owner(self, obj):
         request = self.context['request']
