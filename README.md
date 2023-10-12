@@ -194,17 +194,19 @@ owner = models.ForeignKey()
 
 The choices available for the above model are:
 
-priority_choices = [
+    priority_choices = [
         (1, 'URGENT'),
         (2, 'Normal'),
         (3, 'Low'),
     ]
+
     status_choices = [
         (1, 'Not Started'),
         (2, 'In Progress'),
         (3, 'Complete'),
         (4, 'On hold'),
     ]
+
     privacy_choices = [
         (1, "Private"),
         (2, "Public"),
@@ -343,7 +345,7 @@ priority_choices = [
 1. Go to the GitHub repository
 2. Click on Fork button in top right corner
 3. You will then have a copy of the repository in your own GitHub account.
-4. [GitHub Repository](https://github.com/Sinha5714/pp5-api-ref)
+4. [GitHub Repository](https://github.com/markdaniel1982/md82-p5-api)
 
 ### Cloning the repository in GitHub
 

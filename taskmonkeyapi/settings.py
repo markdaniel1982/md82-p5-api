@@ -69,7 +69,7 @@ DEBUG = 'DEV' in os.environ
 ALLOWED_HOSTS = [
     os.environ.get('ALLOWED_HOST'),
     'https://taskmonkey-fcc370ffbd74.herokuapp.com',
-    '*'
+    'localhost'
 ]
 
 
