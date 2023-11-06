@@ -13,8 +13,8 @@ class TaskSerializer(serializers.ModelSerializer):
     )
     content = serializers.CharField()
     comments_count = serializers.ReadOnlyField()
-    # status = serializers.ReadOnlyField()
-    # priority = serializers.ReadOnlyField()
+    status = serializers.IntegerField()
+    priority = serializers.IntegerField()
 
     created_on = serializers.SerializerMethodField()
     updated_on = serializers.SerializerMethodField()
